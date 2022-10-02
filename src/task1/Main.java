@@ -14,7 +14,10 @@ public class Main {
         Human anna1 = new Human ("Аня","Москва",29);
         Human1 anna2 = new Human1  ("Аня","Москва",29,"методист образовательных программ");
         System.out.println (anna1);
+        System.out.println (anna1.getTown ());
         System.out.println (anna2);
+        System.out.println (anna2.getTown ());
+
         //1. Катя из города Калининград, которой 28 лет
         //2. Катя работает продакт-менеджером
         Human kate1 = new Human ("Катя", "Калининград", 28);

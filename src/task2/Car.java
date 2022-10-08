@@ -2,18 +2,16 @@ package task2;
 
 import java.time.LocalDate;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
+
+
     private double engineVolume;
-    private String color;
-    private final Integer productionYear;
-    private final String productionCountry;
     private String transmission;
     private final String bodyType;
     private String registrationNumbers;
     private final int numberOfSteam;
     private boolean seasonTyres;
+
 
     //private Key key;
     //private Insurance insurance
@@ -24,45 +22,30 @@ public class Car {
                double engineVolume,
                String color,
                Integer productionYear,
-               String productionCountry,
+               String assemblyCountry,
                String transmission,
                String bodyType,
                String registrationNumbers,
-               int numberOfSteam,
-               boolean seasonTyres) {
-        this.brand = brand;
-        this.model = model;
-
+               Integer numberOfSteam,
+               boolean seasonTyres
+    ) {
+        super(brand, model, productionYear, assemblyCountry, color);
         if (engineVolume == 0){
             this.engineVolume = 1.6;
         } else {
             this.engineVolume = engineVolume;
         }
-        if (isNullOrEmpty (color)){
-            this.color = "black";
-        } else {
-            this.color=color;
-        }
-        this.productionYear = productionYear;
-        this.productionCountry = productionCountry;
+
         this.transmission = transmission;
         this.bodyType = bodyType;
         this.registrationNumbers = registrationNumbers;
-
         this.numberOfSteam = numberOfSteam;
         this.seasonTyres = seasonTyres;
-    }
-
-    public Car(String brand, String model, Integer productionYear, String productionCountry, String bodyType, int numberOfSteam) {
-        this.brand = brand;
-        this.model = model;
-        this.productionYear = productionYear;
-        this.productionCountry = productionCountry;
-        this.bodyType = bodyType;
-        this.numberOfSteam = numberOfSteam;
-
 
     }
+
+
+
 
     public double getEngineVolume() {
         return engineVolume;
@@ -76,9 +59,6 @@ public class Car {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public String getTransmission() {
         return transmission;
@@ -104,6 +84,11 @@ public class Car {
         this.seasonTyres = seasonTyres;
     }
 
+    @Override
+    public void refill() {
+        System.out.println ("Машина заправлеяется дизилем, или бензином, или заряжаяется электричеством");
+    }
+
     public String getBrand() {
         return brand;
     }
@@ -112,12 +97,8 @@ public class Car {
         return model;
     }
 
-    public Integer getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
+    public String getAssemblyCountry() {
+        return assemblyCountry;
     }
 
     public String getBodyType() {
@@ -128,9 +109,7 @@ public class Car {
         return numberOfSteam;
     }
 
-    public static boolean isNullOrEmpty (String value) {
-        return value == null || value.isBlank ();
-}
+
 public void changeTiers () {
         this.seasonTyres = !this.seasonTyres;
 }
@@ -179,11 +158,11 @@ public boolean checkNumber () {
 }
 public static class Key {
         private boolean remoteLaunch;
-        private boolean keylessAcceess;
+        private boolean keylessAccess;
 
     public Key(boolean remoteLaunch, boolean keylessAcceess) {
         this.remoteLaunch = remoteLaunch;
-        this.keylessAcceess = keylessAcceess;
+        this.keylessAccess = keylessAcceess;
     }
 }
 public static class Insurrance {
@@ -206,7 +185,11 @@ public static class Insurrance {
         this.cost = cost;
         this.insurranceNumber = insurranceNumber;
     }
+
 }
+    public static boolean isNullOrEmpty (String value) {
+        return value == null || value.isEmpty ();
+    }
 }
 
 
